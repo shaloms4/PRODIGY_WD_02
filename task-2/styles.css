@@ -7,16 +7,16 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; 
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'DigitalNormal';
     src: url('fonts/DigitalNormal-xO6j.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-  }
-  
-  .horizontal-bar {
+}
+
+.horizontal-bar {
     width: 100%;
     height: 80px;
     background: #3c3c3c;
@@ -29,36 +29,36 @@ body {
     padding: 0 20px; 
     box-sizing: border-box;
     justify-content: space-between; 
-  }
-  
-  .horizontal-bar .title {
+}
+
+.horizontal-bar .title {
     color: #fff;
     font-size: 34px; 
-  }
-  
-  .horizontal-bar .nav-links-container {
+}
+
+.horizontal-bar .nav-links-container {
     display: flex;
     align-items: center;
     gap: 20px; 
-  }
-  
-  .horizontal-bar .nav-links a {
+}
+
+.horizontal-bar .nav-links a {
     color: #fff; 
     text-decoration: none;
     font-size: 16px;
     padding: 20px;
-  }
-  
-  .horizontal-bar .nav-links a:hover {
+}
+
+.horizontal-bar .nav-links a:hover {
     color: #b5b5b5;
-  }
-  
-  .setting-icon {
+}
+
+.setting-icon {
     color: #fff;
     font-size: 24px;
-  }
-  
-  .navbar {
+}
+
+.navbar {
     width: 100px;
     position: fixed;
     top: 80px; 
@@ -68,132 +68,127 @@ body {
     display: flex;
     flex-direction: column;
     z-index: 2; 
-  }
-  
-  .navbar .icon-container {
+}
+
+.navbar .icon-container {
     text-align: center;
     color: #fff;
     padding: 15px;
-  }
-  
-  .navbar .icon-container .icon {
+}
+
+.navbar .icon-container .icon {
     font-size: 24px;
     margin-bottom: 5px;
-  }
-  
-  .navbar .icon-container .title {
+}
+
+.navbar .icon-container .title {
     font-size: 16px;
-  }
-  
-  .navbar .icon-container:hover {
+}
+
+.navbar .icon-container:hover {
     background: #575757;
-  }
-  
-  .content {
+}
+
+.content {
     margin-left: 110px; 
     padding: 20px;
     margin-top: 80px; 
-    margin-bottom: 80px; 
     display: flex;
     flex-direction: column;
-    justify-content: center; 
     align-items: center; 
-    gap: 20px; 
-    height: calc(100vh - 160px); 
+    height: calc(100vh - 80px); 
     box-sizing: border-box; 
-  }
+}
 
-  .clock {
+.clock {
     text-align: center;
-  }
- 
-  .time {
+}
+
+.time {
     font-family: 'DigitalNormal', sans-serif; 
     font-size: 100px;
     margin-bottom: 10px;
     position: relative;
-  }
-  
-  .time .milliseconds {
+}
+
+.time .milliseconds {
     font-size: 24px; 
-  }
-  
-  .buttons {
+}
+
+.buttons {
     display: flex;
     gap: 10px; 
-  }
-  
-  button {
+    margin-bottom: 10px; 
+}
+
+button {
     background: #ffa500;
     border: none;
     padding: 8px 15px;
     font-size: 14px; 
     cursor: pointer;
     border-radius: 5px; 
-  }
-  
-  .pause-button {
+}
+
+.pause-button {
     background: #e0a500; 
-  }
-  
-  .lap-button {
+}
+
+.lap-button {
     background: #007bff; 
-  }
-  
-  .pause-button:hover {
+}
+
+.pause-button:hover {
     background: #d68e00; 
-  }
-  
-  .lap-button:hover {
+}
+
+.lap-button:hover {
     background: #0056b3;
-  }
-  
-  ul {
+}
+
+ul {
     list-style: none;
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 0;
     text-align: left;
     max-width: 100%; 
-    max-height: 300px; 
-    overflow-y: auto; 
-  }
-  
-  li {
+}
+
+li {
     color: #ffa500;
     margin-bottom: 5px;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .horizontal-bar {
       padding: 0 10px; 
       flex-direction: column; 
       height: auto; 
     }
-  
+
     .horizontal-bar .nav-links-container {
       margin-top: 10px; 
       gap: 10px;
     }
-  
+
     .setting-icon {
       font-size: 20px; 
     }
-  
+
     .time {
       font-size: 50px;
     }
-  
+
     .time .milliseconds {
       font-size: 20px; 
     }
-  
+
     .buttons {
       flex-direction: column;
     }
-  
+
     .buttons button {
       padding: 6px 10px;
       font-size: 12px;
     }
-  }
-  
+}

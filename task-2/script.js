@@ -8,7 +8,6 @@ const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
 const millisecondsElement = document.getElementById('milliseconds');
-const lapListContainer = document.getElementById('lapListContainer');
 const lapList = document.getElementById('lapList');
 
 function updateDisplay() {
@@ -54,7 +53,6 @@ function resetTimer() {
   document.getElementById('startButton').disabled = false;
   document.getElementById('pauseButton').disabled = true;
   lapList.innerHTML = ''; 
-  lapListContainer.style.display = 'none'; t
 }
 
 function lapTimer() {
@@ -65,6 +63,8 @@ function lapTimer() {
     lapList.appendChild(lapItem);
     lapCount++; 
 
-    lapListContainer.style.display = 'block';
+    // Scroll to the bottom of the page to show the new lap time
+    document.body.scrollTop = document.body.scrollHeight;
+    document.documentElement.scrollTop = document.documentElement.scrollHeight;
   }
 }
