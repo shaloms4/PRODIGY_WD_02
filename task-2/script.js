@@ -1,8 +1,8 @@
 let timerInterval;
 let isRunning = false;
 let startTime;
-let elapsedTime = 0; 
-let lapCount = 1; 
+let elapsedTime = 0;
+let lapCount = 1;
 
 const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
@@ -56,9 +56,9 @@ function resetTimer() {
 }
 
 function lapTimer() {
-  const lapTime = `${lapCount}. ${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}.${millisecondsElement.textContent}`;
+  const lapTime = `${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}.${millisecondsElement.textContent}`;
   const lapItem = document.createElement('li');
-  lapItem.textContent = lapTime;
+  lapItem.innerHTML = `<span class="lap-number">Lap ${lapCount}:</span> ${lapTime}`;
   lapList.appendChild(lapItem);
   lapCount++;
 }
