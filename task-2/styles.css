@@ -1,13 +1,21 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #152557;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 20px 0;
+    color: #fff;
+    font-size: 3em;
+    font-family: 'Kode Mono', monospace; 
+    font-weight: 700;
 }
 
 .container {
@@ -15,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .stopwatch {
@@ -27,16 +36,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.701);    
-}
-
-h1 {
-    margin: 0;
-    color: #fff;
-    font-size: 3em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);    
     margin-bottom: 20px;
-    font-family: 'Kode Mono', monospace; 
-    font-weight: 700;
 }
 
 #display-container {
@@ -52,6 +53,9 @@ h1 {
 
 .buttons {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .buttons button {
@@ -66,10 +70,9 @@ h1 {
 }
 
 .laps-container {
-    flex-grow: 1;
-    overflow-y: auto; 
     margin-top: 20px;
-    width: 300px; 
+    width: 80%; 
+    max-width: 500px; 
 }
 
 #laps {
