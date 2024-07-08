@@ -99,6 +99,7 @@ body {
     height: calc(100vh - 160px);
     box-sizing: border-box;
     margin-bottom: -90px;
+    margin-left: 80px;
 }
 
 .clock {
