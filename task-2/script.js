@@ -19,7 +19,7 @@ function updateDisplay() {
   hoursElement.textContent = hours;
   minutesElement.textContent = minutes;
   secondsElement.textContent = seconds;
-  millisecondsElement.innerHTML = `<span class="milliseconds">${milliseconds}</span>`; 
+  millisecondsElement.textContent = milliseconds;
 }
 
 function startTimer() {
@@ -48,23 +48,17 @@ function resetTimer() {
   isRunning = false;
   clearInterval(timerInterval);
   elapsedTime = 0;
-  lapCount = 1;
   updateDisplay();
   document.getElementById('startButton').disabled = false;
   document.getElementById('pauseButton').disabled = true;
-  lapList.innerHTML = ''; 
+  lapCount = 1;
+  lapList.innerHTML = '';
 }
 
 function lapTimer() {
-  if (isRunning) {
-    const lapTime = `${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}.${millisecondsElement.textContent}`;
-    const lapItem = document.createElement('li');
-    lapItem.textContent = `Lap ${lapCount}: ${lapTime}`; 
-    lapList.appendChild(lapItem);
-    lapCount++; 
-
-    // Scroll to the bottom of the page to show the new lap time
-    document.body.scrollTop = document.body.scrollHeight;
-    document.documentElement.scrollTop = document.documentElement.scrollHeight;
-  }
+  const lapTime = `${lapCount}. ${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}.${millisecondsElement.textContent}`;
+  const lapItem = document.createElement('li');
+  lapItem.textContent = lapTime;
+  lapList.appendChild(lapItem);
+  lapCount++;
 }
