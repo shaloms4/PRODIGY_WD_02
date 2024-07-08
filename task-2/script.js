@@ -26,7 +26,7 @@ function startTimer() {
     timerInterval = setInterval(() => {
       elapsedTime = Date.now() - startTime;
       updateDisplay();
-    }, 1000); // Update display every second
+    }, 1000); 
     document.getElementById('startButton').disabled = true;
     document.getElementById('pauseButton').disabled = false;
   }
@@ -55,7 +55,7 @@ function resetTimer() {
 function lapTimer() {
   const lapTime = `${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}`;
   const lapItem = document.createElement('li');
-  lapItem.innerHTML = `<span class="lap-number">${lapCount} -  </span> <span class="lap-time">${lapTime}</span>`;
+  lapItem.innerHTML = `<span class="lap-number">${lapCount} - </span> <span class="lap-time">${lapTime}</span>`;
   lapList.appendChild(lapItem);
   lapCount++;
 }
