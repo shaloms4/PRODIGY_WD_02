@@ -108,21 +108,45 @@ body {
 }
 
 .time {
-    font-family: 'DigitalNormal', sans-serif; 
+
+    font-family: 'DigitalNormal', sans-serif;
+  
     font-size: 100px;
+  
     margin-bottom: 10px;
-    position: relative;
-}
+  
+    
+  
+    display: flex; /* Add this line */
+  
+    width: 100px; /* Adjust the width to fit your timer display */
+  
+    text-align: center;
+  
+  }
+  
+  .time span {
+    margin: 0 5px; /* Add some margin between the time digits */
+  }
 
 .time .milliseconds {
     font-size: 24px; 
+    display: flex;
+    align-items: baseline;
 }
 
 .buttons {
+
     display: flex;
-    gap: 10px; 
-    margin-bottom: 10px; 
-}
+  
+    gap: 10px;
+  
+    margin-bottom: 10px;
+  
+    justify-content: center; /* Add this line */
+    padding-left: 60px;
+  
+  }
 
 button {
     background: #ffa500;
