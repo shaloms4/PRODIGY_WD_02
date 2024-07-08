@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stopwatch</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vClock</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>StopWatch</h1>
-    <div class="container">
-        <div class="stopwatch">
-            <div id="display-container">
-                <div id="display">00:00:00.00</div>
-            </div>
+    <div class="horizontal-bar">
+        <h1 class="title">StopWatch</h1>
+        <div class="nav-links-container">
+          <div class="nav-links">
+            <a href="#tools">Tools</a>
+            <a href="#times">Times</a>
+          </div>
+          <i class="fa-solid fa-gear setting-icon"></i>
         </div>
-        <div class="buttons">
-            <button id="start">Start</button>
-            <button id="pause">Pause</button>
-            <button id="reset">Reset</button>
-            <button id="lap">Lap</button>
+      </div>
+      <div class="navbar">
+        <div class="icon-container">
+          <i class="fa-solid fa-bell icon" title="Alarm"></i>
+          <div class="title">Alarm</div>
         </div>
-        <div class="laps-container">
-            <ul id="laps"></ul>
+        <div class="icon-container">
+          <i class="fa-solid fa-clock icon" title="Timer"></i>
+          <div class="title">Timer</div>
         </div>
-    </div>
-    <script src="script.js"></script>
+        <div class="icon-container">
+          <i class="fa-solid fa-stopwatch icon" title="Stopwatch"></i>
+          <div class="title">Stopwatch</div>
+        </div>
+        <div class="icon-container">
+          <i class="fa-solid fa-calendar icon" title="Time"></i>
+          <div class="title">Time</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="clock" id="clock">
+          <div class="time" id="time">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>.<span class="milliseconds" id="milliseconds">00</span>
+          </div>
+          <div class="buttons">
+            <button id="resetButton" onclick="resetTimer()">Reset</button>
+            <button id="pauseButton" class="pause-button" onclick="pauseTimer()">Pause</button>
+            <button id="startButton" onclick="startTimer()">Start</button>
+            <button id="lapButton" class="lap-button" onclick="lapTimer()">Lap</button>
+          </div>
+          <ul id="lapList"></ul>
+        </div>
+      </div>
+      <script src="script.js"></script>
 </body>
 </html>

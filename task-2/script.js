@@ -1,62 +1,70 @@
-let timer;
+let timerInterval;
 let isRunning = false;
-let elapsedTime = 0;
-let lapTime = 0;
+let startTime;
+let elapsedTime = 0; 
+let lapCount = 1; 
 
-const display = document.getElementById('display');
-const startButton = document.getElementById('start');
-const pauseButton = document.getElementById('pause');
-const resetButton = document.getElementById('reset');
-const lapButton = document.getElementById('lap');
-const lapsList = document.getElementById('laps');
-
-function formatTime(time) {
-    const hours = String(Math.floor(time / 3600)).padStart(2, '0');
-    const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
-    const seconds = String(Math.floor(time % 60)).padStart(2, '0');
-    const microseconds = String(Math.floor((time % 1) * 100)).padStart(2, '0'); 
-    return `${hours}:${minutes}:${seconds}.${microseconds}`;
-}
+const hoursElement = document.getElementById('hours');
+const minutesElement = document.getElementById('minutes');
+const secondsElement = document.getElementById('seconds');
+const millisecondsElement = document.getElementById('milliseconds');
+const lapListContainer = document.getElementById('lapListContainer');
+const lapList = document.getElementById('lapList');
 
 function updateDisplay() {
-    display.textContent = formatTime(elapsedTime);
+  const hours = Math.floor(elapsedTime / (1000 * 60 * 60)).toString().padStart(2, '0');
+  const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+  const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000).toString().padStart(2, '0');
+  const milliseconds = Math.floor((elapsedTime % 1000) / 10).toString().padStart(2, '0');
+
+  hoursElement.textContent = hours;
+  minutesElement.textContent = minutes;
+  secondsElement.textContent = seconds;
+  millisecondsElement.innerHTML = `<span class="milliseconds">${milliseconds}</span>`; 
 }
 
 function startTimer() {
-    if (!isRunning) {
-        timer = setInterval(() => {
-            elapsedTime += 0.01; 
-            updateDisplay();
-        }, 10); 
-        isRunning = true;
-    }
+  if (!isRunning) {
+    isRunning = true;
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(() => {
+      elapsedTime = Date.now() - startTime;
+      updateDisplay();
+    }, 10);
+    document.getElementById('startButton').disabled = true;
+    document.getElementById('pauseButton').disabled = false;
+  }
 }
 
 function pauseTimer() {
-    clearInterval(timer);
+  if (isRunning) {
     isRunning = false;
+    clearInterval(timerInterval);
+    document.getElementById('startButton').disabled = false;
+    document.getElementById('pauseButton').disabled = true;
+  }
 }
 
 function resetTimer() {
-    clearInterval(timer);
-    isRunning = false;
-    elapsedTime = 0;
-    updateDisplay();
-    lapsList.innerHTML = '';
+  isRunning = false;
+  clearInterval(timerInterval);
+  elapsedTime = 0;
+  lapCount = 1;
+  updateDisplay();
+  document.getElementById('startButton').disabled = false;
+  document.getElementById('pauseButton').disabled = true;
+  lapList.innerHTML = ''; 
+  lapListContainer.style.display = 'none'; t
 }
 
-function recordLap() {
-    if (isRunning) {
-        const lapItem = document.createElement('li');
-        lapTime = elapsedTime;
-        lapItem.textContent = formatTime(lapTime);
-        lapsList.appendChild(lapItem);
-    }
+function lapTimer() {
+  if (isRunning) {
+    const lapTime = `${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}.${millisecondsElement.textContent}`;
+    const lapItem = document.createElement('li');
+    lapItem.textContent = `Lap ${lapCount}: ${lapTime}`; 
+    lapList.appendChild(lapItem);
+    lapCount++; 
+
+    lapListContainer.style.display = 'block';
+  }
 }
-
-startButton.addEventListener('click', startTimer);
-pauseButton.addEventListener('click', pauseTimer);
-resetButton.addEventListener('click', resetTimer);
-lapButton.addEventListener('click', recordLap);
-
-updateDisplay();
