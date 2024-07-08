@@ -7,19 +7,16 @@ let lapCount = 1;
 const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
-const millisecondsElement = document.getElementById('milliseconds');
 const lapList = document.getElementById('lapList');
 
 function updateDisplay() {
   const hours = Math.floor(elapsedTime / (1000 * 60 * 60)).toString().padStart(2, '0');
   const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
   const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  const milliseconds = Math.floor((elapsedTime % 1000) / 10).toString().padStart(2, '0');
 
   hoursElement.textContent = hours;
   minutesElement.textContent = minutes;
   secondsElement.textContent = seconds;
-  millisecondsElement.textContent = milliseconds;
 }
 
 function startTimer() {
@@ -29,7 +26,7 @@ function startTimer() {
     timerInterval = setInterval(() => {
       elapsedTime = Date.now() - startTime;
       updateDisplay();
-    }, 10);
+    }, 1000); // Update display every second
     document.getElementById('startButton').disabled = true;
     document.getElementById('pauseButton').disabled = false;
   }
@@ -56,9 +53,9 @@ function resetTimer() {
 }
 
 function lapTimer() {
-  const lapTime = `${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}.${millisecondsElement.textContent}`;
+  const lapTime = `${hoursElement.textContent}:${minutesElement.textContent}:${secondsElement.textContent}`;
   const lapItem = document.createElement('li');
-  lapItem.innerHTML = `<span class="lap-number">Lap ${lapCount}:</span> ${lapTime}`;
+  lapItem.innerHTML = `<span class="lap-number">${lapCount} -  </span> <span class="lap-time">${lapTime}</span>`;
   lapList.appendChild(lapItem);
   lapCount++;
 }
